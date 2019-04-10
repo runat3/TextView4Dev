@@ -73,7 +73,11 @@ public class TextView4Dev extends AppCompatTextView
         // 布局设置
         layoutParams = new WindowManager.LayoutParams();
         // 设置window type
-        layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//8.0
+            layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        }
         // 设置背景透明
         layoutParams.format = PixelFormat.RGBA_8888;
         // 设置显示的位置
